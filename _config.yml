@@ -29,6 +29,14 @@ giscus:
 
 permalink: /:year/:month/:title/
 
+# Bài trong _posts/ tự dùng layout "post" (không cần ghi trong front matter)
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+
 markdown: kramdown
 kramdown:
   input: GFM
