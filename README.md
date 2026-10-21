@@ -38,6 +38,28 @@ bundle exec jekyll serve --livereload       # http://127.0.0.1:4000
 
 Sửa `_config.yml` thì phải dừng (Ctrl-C) và chạy lại; các file khác tự nạp lại.
 
+## Quy trình viết bài
+
+```bash
+cd ~/Projects/den-va-trang
+
+# 1. Tạo file bài mới trong _posts/, tên dạng YYYY-MM-DD-ten-bai.md
+code _posts/2026-10-25-ten-bai.md
+
+# 2. (Tuỳ chọn) Xem trước trên máy — nên làm khi bài có công thức hoặc ảnh
+bundle exec jekyll serve --livereload     # mở http://127.0.0.1:4000, Ctrl-C để dừng
+
+# 3. Đưa lên: GitHub tự build và cập nhật site sau khoảng 1 phút
+git add _posts/2026-10-25-ten-bai.md
+git commit -m "Bài mới: ten-bai"
+git push
+```
+
+Kiểm tra build trên GitHub: `gh run list --limit 3` (hoặc `gh run watch` để theo dõi).
+Nếu build lỗi: `gh run view --log-failed`.
+
+Đổi ảnh trang chủ: sửa `_data/home_photo.yml`, rồi commit + push như bước 3.
+
 ## Viết bài
 
 ```yaml
