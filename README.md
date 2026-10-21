@@ -92,6 +92,32 @@ comments: false             # không bắt buộc; tắt bình luận cho bài n
        title="Tên ảnh" alt="Mô tả" wide=true %}
   ```
 
+## Ván cờ SGF
+
+File `.sgf` đặt trong `assets/sgf/` (tên chữ thường, không dấu, mã hoá UTF-8). Trong bài:
+
+```liquid
+{% include sgf.html file="/assets/sgf/ten-van.sgf" %}             tua được, bắt đầu từ bàn trống
+{% include sgf.html file="/assets/sgf/ten-van.sgf" move=78 %}     tua được, mở ở nước 78
+{% include sgf.html file="/assets/sgf/ten-van.sgf" move=78 static=true numbers=8 coords=true
+     caption="Hình 1. Thế cờ sau nước 78" %}                      hình tĩnh, đánh số 8 nước cuối
+```
+
+| Tham số | Ý nghĩa |
+|---|---|
+| `file` | đường dẫn file SGF (bắt buộc) |
+| `move` | nước hiển thị ban đầu (mặc định 0; hình tĩnh mặc định là nước cuối) |
+| `static=true` | chỉ vẽ thế cờ, không có nút tua |
+| `numbers=N` | ghi số trên N quân vừa đi gần nhất |
+| `coords=true` | hiện toạ độ A–T / 1–19 |
+| `caption="…"` | chú thích dưới bàn cờ |
+| `info=false` | ẩn dòng tên kỳ thủ / kết quả |
+| `comments=false` | ẩn bình luận `C[]` có sẵn trong file |
+
+Trình xem (`assets/js/sgf.js`) chỉ đọc nhánh chính, bỏ qua các nhánh biến. Bình luận `C[]`
+trong file hiện dưới bàn cờ theo từng nước. Tua bằng nút, thanh trượt, hoặc phím ← → Home End
+sau khi bấm vào bàn cờ.
+
 ## Đưa lên GitHub
 
 ```bash

@@ -1,0 +1,26 @@
+{%- comment -%}
+  Hiển thị một ván cờ từ file SGF.
+
+  {% include sgf.html file="/assets/sgf/ten-van.sgf" %}                  tua được, bắt đầu từ thế trống
+  {% include sgf.html file="/assets/sgf/ten-van.sgf" move=78 %}          tua được, mở ở nước 78
+  {% include sgf.html file="/assets/sgf/ten-van.sgf" move=78 static=true numbers=8 coords=true
+       caption="Hình 1. Thế cờ sau nước 78" %}                           hình tĩnh, đánh số 8 nước cuối
+
+  Tham số: file (bắt buộc), move, static, numbers, coords, caption,
+           info=false (ẩn tên kỳ thủ), comments=false (ẩn bình luận trong file).
+{%- endcomment -%}
+{%- assign sgf_url = include.file | relative_url -%}
+<figure class="sgf{% if include.static %} sgf-static{% endif %}" data-sgf="{{ sgf_url }}"
+  {%- if include.move %} data-move="{{ include.move }}"{% endif %}
+  {%- if include.static %} data-static="1"{% endif %}
+  {%- if include.coords %} data-coords="1"{% endif %}
+  {%- if include.numbers %} data-numbers="{{ include.numbers }}"{% endif %}
+  {%- if include.info == false %} data-info="0"{% endif %}
+  {%- if include.comments == false %} data-comments="0"{% endif %}>
+  <div class="sgf-view"><noscript><p class="sgf-error">Cần bật JavaScript để xem ván cờ.</p></noscript></div>
+  <figcaption class="sgf-foot">
+    <span>{{ include.caption }}</span>
+    <a href="{{ sgf_url }}" download>Tải SGF</a>
+  </figcaption>
+</figure>
+<script defer src="{{ '/assets/js/sgf.js' | relative_url }}"></script>

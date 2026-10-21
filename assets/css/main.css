@@ -195,6 +195,60 @@ figure.flickr.wide {
   margin-top: 64px; margin-bottom: 64px;
 }
 
+/* Ván cờ SGF (assets/js/sgf.js) */
+:root { --grid: rgba(20, 20, 20, .32); }
+:root[data-theme="dark"] { --grid: rgba(236, 235, 231, .26); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --grid: rgba(236, 235, 231, .26); } }
+
+figure.sgf { margin: 48px 0; outline-offset: 8px; }
+.sgf-view > * { max-width: 560px; margin-left: auto; margin-right: auto; }
+.sgf-info {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; margin-bottom: 14px;
+  font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--muted);
+}
+.sgf-player { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); font-weight: 400; }
+.sgf-player small { font-size: 12px; color: var(--muted); font-weight: 300; }
+.sgf-meta { margin-left: auto; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.sgf-board svg { display: block; width: 100%; height: auto; }
+.sgf-grid { stroke: var(--grid); stroke-width: 1; }
+.sgf-edge { stroke: var(--ink); stroke-opacity: .6; stroke-width: 1.6; }
+.sgf-hoshi { fill: var(--muted); }
+.sgf-coord {
+  font-family: var(--sans); font-size: 11px; fill: var(--muted);
+  text-anchor: middle; dominant-baseline: central;
+}
+.sgf-num { font-family: var(--sans); font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+.sgf-num.on-b { fill: #f7f6f2; }
+.sgf-num.on-w { fill: #141414; }
+.sgf-last { fill: none; stroke-width: 1.6; }
+.sgf-last.on-b { stroke: #f7f6f2; }
+.sgf-last.on-w { stroke: #141414; }
+.sgf-range { display: block; width: 100%; margin-top: 14px; accent-color: var(--ink); }
+.sgf-controls {
+  display: flex; align-items: center; justify-content: center; gap: 2px; margin-top: 4px;
+  font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--muted);
+}
+.sgf-controls button {
+  width: 44px; height: 44px; padding: 0; border: 0; background: none; cursor: pointer;
+  font-family: var(--sans); font-size: 20px; line-height: 1; color: var(--ink);
+}
+.sgf-controls button:hover { color: var(--accent); }
+.sgf-controls button:disabled { opacity: .25; cursor: default; color: var(--ink); }
+.sgf-count { min-width: 120px; text-align: center; font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+.prose .sgf-comment {
+  margin-top: 8px; margin-bottom: 0;
+  font-size: 16px; line-height: 1.7; font-style: italic; color: var(--muted); white-space: pre-line;
+  max-height: 13.6em; overflow-y: auto;          /* bình luận dài thì cuộn trong khung */
+}
+.sgf-foot {
+  max-width: 560px; margin: 12px auto 0;
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px;
+  font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--muted);
+}
+.prose .sgf-foot a { text-decoration: none; }
+.sgf-error { font-family: var(--sans); font-size: 14px; color: var(--muted); }
+
 .end-mark {
   width: 6px; height: 6px; border-radius: 50%;
   background: var(--ink); margin: 72px auto 0;
