@@ -74,6 +74,9 @@ comments: false             # không bắt buộc; tắt bình luận cho bài n
 ---
 ```
 
+- **Ngày đăng**: Jekyll không đăng bài có `date` ở tương lai (so với lúc build). Bỏ trống `date:` thì
+  lấy ngày ở tên file, lúc 00:00. Bài hẹn giờ chỉ hiện khi có một lần build chạy sau thời điểm đó
+  (`gh workflow run Deploy`).
 - **Số 手** tự đếm theo ngày đăng (bài cũ nhất = 1). Xoá một bài cũ thì các số sau bị dịch;
   muốn cố định thì ghi `move:` trong front matter.
 - **Bản nháp**: để ngoài repo, hoặc trong `_drafts/` (không có ngày ở tên file) và xem bằng
