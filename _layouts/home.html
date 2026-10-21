@@ -1,0 +1,37 @@
+---
+layout: default
+---
+<section class="intro wrap">
+  <p>{{ content }}</p>
+</section>
+
+<section class="archive wrap" aria-label="Ghi chép">
+  <ol class="post-list" reversed>
+    {%- for post in site.posts %}
+    <li>
+      <a class="row" href="{{ post.url | relative_url }}">
+        <span class="stone {% if post.stone == 'white' %}white{% else %}black{% endif %}" aria-hidden="true"></span>
+        {%- capture n %}{% include move.html post=post %}{% endcapture %}
+        <abbr class="move" title="Nước thứ {{ n | strip }}">手 {{ n | strip }}</abbr>
+        <span class="t">{{ post.title | escape }}</span>
+        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d.%m.%Y' }}</time>
+      </a>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>
+
+{%- assign ph = site.data.home_photo %}
+{%- if ph and ph.src and ph.src != "" %}
+<section class="home-photo wrap-wide" aria-label="Ảnh">
+  <figure>
+    {%- if ph.page and ph.page != "" %}<a href="{{ ph.page }}">{% endif -%}
+    <img src="{{ ph.src }}" alt="{{ ph.alt | default: ph.title }}" loading="lazy" decoding="async">
+    {%- if ph.page and ph.page != "" %}</a>{% endif %}
+    <figcaption>
+      <span>{{ ph.title }}</span>
+      {%- if ph.page and ph.page != "" %}<a href="{{ ph.page }}">Flickr ↗</a>{% endif %}
+    </figcaption>
+  </figure>
+</section>
+{%- endif %}

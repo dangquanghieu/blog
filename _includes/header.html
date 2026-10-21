@@ -1,0 +1,19 @@
+<header class="site-header wrap">
+  <a class="brand" href="{{ '/' | relative_url }}">
+    <svg width="30" height="18" viewBox="0 0 30 18" aria-hidden="true">
+      <circle class="stone-b" cx="9" cy="9" r="8"></circle>
+      <circle class="stone-w" cx="21" cy="9" r="8"></circle>
+    </svg>
+    <span>{{ site.title }}</span>
+  </a>
+  <nav class="site-nav" aria-label="Điều hướng chính">
+    <a href="{{ '/' | relative_url }}"{% if page.layout == 'home' or page.layout == 'post' %} aria-current="page"{% endif %}>Ghi chép</a>
+    <a href="{{ '/gioi-thieu/' | relative_url }}"{% if page.url == '/gioi-thieu/' %} aria-current="page"{% endif %}>Giới thiệu</a>
+    <button class="theme-toggle" type="button" aria-label="Đổi giao diện sáng/tối">
+      <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true">
+        <circle cx="10" cy="10" r="8.5" fill="none" stroke="currentColor" stroke-width="1.4"></circle>
+        <path d="M10 1.5 A8.5 8.5 0 0 1 10 18.5 Z" fill="currentColor"></path>
+      </svg>
+    </button>
+  </nav>
+</header>

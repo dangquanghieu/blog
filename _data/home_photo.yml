@@ -1,0 +1,10 @@
+# Ảnh ở cuối trang chủ. Muốn đổi ảnh: chỉ sửa file này, commit, push.
+# Để trống `src` thì trang chủ không hiện ảnh.
+#
+# Lấy URL ảnh tĩnh trên Flickr: trang ảnh → Share → BBCode, chép URL trong [img]…[/img]
+# Hậu tố cỡ ảnh: _b = 1024 px, _h = 1600 px, _k = 2048 px.
+
+src: ""            # https://live.staticflickr.com/65535/<id>_<secret>_h.jpg
+page: ""           # https://www.flickr.com/photos/<username>/<id>/
+title: ""          # Sương sớm, Hồ Tây
+alt: ""            # mô tả ngắn cho người dùng trình đọc màn hình

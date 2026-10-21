@@ -1,0 +1,18 @@
+{%- comment -%}
+  Nhúng ảnh Flickr vào bài:
+  {% include flickr.html src="https://live.staticflickr.com/…_h.jpg"
+       page="https://www.flickr.com/photos/<user>/<id>/"
+       title="Tên ảnh" alt="Mô tả" wide=true %}
+  wide=true: ảnh tràn rộng hơn cột chữ.
+{%- endcomment -%}
+<figure class="flickr{% if include.wide %} wide{% endif %}">
+  {%- if include.page %}<a href="{{ include.page }}">{% endif -%}
+  <img src="{{ include.src }}" alt="{{ include.alt | default: include.title }}" loading="lazy" decoding="async">
+  {%- if include.page %}</a>{% endif -%}
+  {%- if include.title or include.page %}
+  <figcaption>
+    <span>{{ include.title }}</span>
+    {%- if include.page %}<a href="{{ include.page }}">Flickr ↗</a>{% endif %}
+  </figcaption>
+  {%- endif %}
+</figure>

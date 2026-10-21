@@ -1,0 +1,39 @@
+---
+layout: default
+---
+{%- capture n %}{% include move.html post=page %}{% endcapture -%}
+<article class="post">
+  <header class="post-head wrap-text">
+    <p class="post-meta">
+      <abbr class="move" title="Nước thứ {{ n | strip }}">手 {{ n | strip }}</abbr>
+      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%d.%m.%Y' }}</time>
+    </p>
+    <h1>{{ page.title | escape }}</h1>
+  </header>
+
+  <div class="prose wrap-text">
+    {{ content }}
+  </div>
+
+  <div class="end-mark" aria-hidden="true"></div>
+</article>
+
+<div class="post-foot wrap-text">
+  {%- if page.tags.size > 0 %}
+  <p class="tags">{% for tag in page.tags %}<span>#{{ tag }}</span>{% endfor %}</p>
+  {%- endif %}
+  <nav class="post-nav" aria-label="Bài trước và bài sau">
+    {%- if page.previous %}
+    {%- capture pn %}{% include move.html post=page.previous %}{% endcapture %}
+    <a href="{{ page.previous.url | relative_url }}">← 手 {{ pn | strip }} · {{ page.previous.title | escape }}</a>
+    {%- else %}<span></span>{% endif %}
+    {%- if page.next %}
+    {%- capture nn %}{% include move.html post=page.next %}{% endcapture %}
+    <a href="{{ page.next.url | relative_url }}">{{ page.next.title | escape }} · 手 {{ nn | strip }} →</a>
+    {%- endif %}
+  </nav>
+</div>
+
+{%- if site.giscus.repo != "" and site.giscus.repo_id != "" and page.comments != false %}
+<div class="wrap-text">{% include giscus.html %}</div>
+{%- endif %}

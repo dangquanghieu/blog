@@ -1,0 +1,22 @@
+<footer class="site-footer wrap">
+  <span>© {{ site.time | date: '%Y' }} {{ site.author }}</span>
+  <span class="links">
+    <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
+    {%- if site.flickr != "" and site.flickr %}<a href="{{ site.flickr }}">Flickr</a>{% endif -%}
+    {%- if site.main_site != "" and site.main_site %}<a href="{{ site.main_site }}">{{ site.main_site | remove: 'https://' | remove: 'http://' }}</a>{% endif -%}
+  </span>
+</footer>
+<script>
+  (function () {
+    var root = document.documentElement;
+    var btn = document.querySelector('.theme-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var cur = root.getAttribute('data-theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('dvt-theme', next); } catch (e) {}
+    });
+  })();
+</script>

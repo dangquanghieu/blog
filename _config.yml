@@ -1,0 +1,49 @@
+# ─────────────────────────────────────────────────────────────
+#  Đen và Trắng — cấu hình site
+#  Lưu ý: sửa file này khi đang chạy `jekyll serve` thì phải
+#  dừng (Ctrl-C) và chạy lại mới thấy thay đổi.
+# ─────────────────────────────────────────────────────────────
+
+title: Đen và Trắng
+description: Ghi chép chậm về cờ, ánh sáng, và những thứ khác.
+author: Đặng Quang Hiếu          # tên hiện ở footer và trong thẻ meta
+lang: vi
+timezone: Asia/Ho_Chi_Minh
+
+# url/baseurl chỉ dùng khi chạy trên máy. Khi deploy, GitHub Actions
+# tự ghi đè hai giá trị này theo cấu hình Pages của repo
+# (subdomain → baseurl rỗng; không gắn domain → baseurl "/<tên-repo>").
+url: "http://localhost:4000"
+baseurl: ""
+
+# Liên kết ở footer (để trống thì không hiện)
+main_site: https://dangquanghieu.com
+flickr: ""                       # ví dụ https://www.flickr.com/photos/<username>/
+
+# Bình luận bằng giscus (https://giscus.app). Điền đủ 4 giá trị để bật.
+giscus:
+  repo: ""                       # ví dụ dangquanghieu/blog
+  repo_id: ""
+  category: ""
+  category_id: ""
+
+permalink: /:year/:month/:title/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github
+  - _config_ci.yml

@@ -1,0 +1,15 @@
+{%- comment -%}
+  Số "手" của một bài: dùng `move:` trong front matter nếu có,
+  nếu không thì đếm theo thứ tự ngày đăng (bài cũ nhất = 1).
+  Dùng: {% include move.html post=page %}
+{%- endcomment -%}
+{%- if include.post.move -%}
+  {{- include.post.move -}}
+{%- else -%}
+  {%- for p in site.posts -%}
+    {%- if p.url == include.post.url -%}
+      {{- site.posts.size | minus: forloop.index0 -}}
+      {%- break -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endif -%}
