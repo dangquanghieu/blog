@@ -35,8 +35,10 @@ jobs:
       #   không gắn domain (repo "blog")            → dangquanghieu.com/blog
       - name: Build
         run: |
-          printf 'url: "%s"\nbaseurl: "%s"\n' \
-            "${{ steps.pages.outputs.origin }}" "${{ steps.pages.outputs.base_path }}" > _config_ci.yml
+          ORIGIN="${{ steps.pages.outputs.origin }}"
+          ORIGIN="${ORIGIN/#http:/https:}"          # luôn dùng https cho link tuyệt đối
+          printf 'url: "%s"\nbaseurl: "%s"\n' "$ORIGIN" "${{ steps.pages.outputs.base_path }}" > _config_ci.yml
+          cat _config_ci.yml
           bundle exec jekyll build --config _config.yml,_config_ci.yml
         env:
           JEKYLL_ENV: production
