@@ -4,7 +4,7 @@
 # Lấy URL ảnh tĩnh trên Flickr: trang ảnh → Share → BBCode, chép URL trong [img]…[/img]
 # Hậu tố cỡ ảnh: _b = 1024 px, _h = 1600 px, _k = 2048 px.
 
-src: ""            # https://live.staticflickr.com/65535/<id>_<secret>_h.jpg
-page: ""           # https://www.flickr.com/photos/<username>/<id>/
-title: ""          # Sương sớm, Hồ Tây
-alt: ""            # mô tả ngắn cho người dùng trình đọc màn hình
+src: "https://live.staticflickr.com/55541359096/<id>_<secret>_h.jpg"            # https://live.staticflickr.com/65535/<id>_<secret>_h.jpg
+page: "https://www.flickr.com/photos/fridaycafe/"           # https://www.flickr.com/photos/<username>/<id>/
+title: "Nắng chiều, mùa thu"          # Sương sớm, Hồ Tây
+alt: "Nắng thu"            # mô tả ngắn cho người dùng trình đọc màn hình
