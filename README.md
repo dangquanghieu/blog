@@ -55,7 +55,10 @@ git commit -m "Bài mới: ten-bai"
 git push
 ```
 
-Kiểm tra build trên GitHub: `gh run list --limit 3` (hoặc `gh run watch` để theo dõi).
+Kiểm tra build trên GitHub: `gh run list --limit 3` (✓ xong · X lỗi · * đang chạy).
+Chờ lần build mới nhất chạy xong rồi mới trả dấu nhắc:
+`gh run watch $(gh run list --limit 1 --json databaseId -q '.[0].databaseId') --exit-status`
+(Ctrl-C để thoát bất cứ lúc nào — chỉ dừng việc theo dõi, không huỷ build.)
 Nếu build lỗi: `gh run view --log-failed`.
 
 Đổi ảnh trang chủ: sửa `_data/home_photo.yml`, rồi commit + push như bước 3.
