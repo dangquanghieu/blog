@@ -199,6 +199,7 @@
     var X = function (x) { return pad + x * cell; };
 
     o.push('<svg viewBox="0 0 ' + full + ' ' + full + '" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">');
+    o.push('<rect class="sgf-bg" x="0" y="0" width="' + full + '" height="' + full + '" rx="3"/>');
     for (var i = 0; i < size; i++) {
       var cls = (i === 0 || i === size - 1) ? 'sgf-edge' : 'sgf-grid';
       o.push('<line class="' + cls + '" x1="' + pad + '" y1="' + X(i) + '" x2="' + (pad + span) + '" y2="' + X(i) + '"/>');

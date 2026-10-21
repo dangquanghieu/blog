@@ -196,9 +196,11 @@ figure.flickr.wide {
 }
 
 /* Ván cờ SGF (assets/js/sgf.js) */
-:root { --grid: rgba(20, 20, 20, .32); }
-:root[data-theme="dark"] { --grid: rgba(236, 235, 231, .26); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --grid: rgba(236, 235, 231, .26); } }
+/* --board: mặt bàn. Sáng: trong suốt. Tối: sáng hơn nền trang một chút để quân đen nổi lên. */
+:root { --grid: rgba(20, 20, 20, .32); --board: transparent; }
+:root[data-theme="dark"] { --grid: rgba(236, 235, 231, .22); --board: #34322e; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --grid: rgba(236, 235, 231, .22); --board: #34322e; } }
+.sgf-bg { fill: var(--board); }
 
 figure.sgf { margin: 48px 0; outline-offset: 8px; }
 .sgf-view > * { max-width: 560px; margin-left: auto; margin-right: auto; }
