@@ -63,6 +63,15 @@ Nếu build lỗi: `gh run view --log-failed`.
 
 Đổi ảnh trang chủ: sửa `_data/home_photo.yml`, rồi commit + push như bước 3.
 
+## Trang chủ và trang Ghi chép
+
+- Trang chủ hiện `home_posts` bài mới nhất (mặc định 7), kèm link "Tất cả ghi chép →"
+  khi có nhiều bài hơn.
+- Menu "Ghi chép" dẫn tới `/ghi-chep/`: toàn bộ bài, nhóm theo năm, `paginate` bài mỗi trang
+  (mặc định 20); các trang sau ở `/ghi-chep/trang/2/`, `/ghi-chep/trang/3/`…
+- Hai con số này chỉnh trong `_config.yml`. Phân trang dùng plugin `jekyll-paginate`
+  (sau khi thêm vào Gemfile phải chạy `bundle install` một lần và commit `Gemfile.lock`).
+
 ## Viết bài
 
 ```yaml

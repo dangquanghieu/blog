@@ -5,20 +5,16 @@ layout: default
   <p>{{ content }}</p>
 </section>
 
-<section class="archive wrap" aria-label="Ghi chép">
-  <ol class="post-list" reversed>
-    {%- for post in site.posts %}
-    <li>
-      <a class="row" href="{{ post.url | relative_url }}">
-        <span class="stone {% if post.stone == 'white' %}white{% else %}black{% endif %}" aria-hidden="true"></span>
-        {%- capture n %}{% include move.html post=post %}{% endcapture %}
-        <abbr class="move" title="Nước thứ {{ n | strip }}">手 {{ n | strip }}</abbr>
-        <span class="t">{{ post.title | escape }}</span>
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%d.%m.%Y' }}</time>
-      </a>
-    </li>
+{%- assign home_limit = site.home_posts | default: 7 %}
+<section class="archive wrap" aria-label="Ghi chép gần đây">
+  <ol class="post-list">
+    {%- for post in site.posts limit: home_limit %}
+    {% include post-row.html post=post %}
     {%- endfor %}
   </ol>
+  {%- if site.posts.size > home_limit %}
+  <p class="more"><a href="{{ '/ghi-chep/' | relative_url }}">Tất cả ghi chép →</a></p>
+  {%- endif %}
 </section>
 
 {%- assign ph = site.data.home_photo %}

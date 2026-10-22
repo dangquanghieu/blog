@@ -7,7 +7,7 @@
     <span>{{ site.title }}</span>
   </a>
   <nav class="site-nav" aria-label="Điều hướng chính">
-    <a href="{{ '/' | relative_url }}"{% if page.layout == 'home' or page.layout == 'post' %} aria-current="page"{% endif %}>Ghi chép</a>
+    <a href="{{ '/ghi-chep/' | relative_url }}"{% if page.url contains '/ghi-chep/' or page.layout == 'post' %} aria-current="page"{% endif %}>Ghi chép</a>
     <a href="{{ '/gioi-thieu/' | relative_url }}"{% if page.url == '/gioi-thieu/' %} aria-current="page"{% endif %}>Giới thiệu</a>
     <button class="theme-toggle" type="button" aria-label="Đổi giao diện sáng/tối">
       <svg width="16" height="16" viewBox="0 0 20 20" aria-hidden="true">

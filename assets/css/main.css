@@ -266,6 +266,41 @@ figure.sgf { margin: 48px 0; outline-offset: 8px; }
 
 .comments { margin-top: 56px; }
 
+/* ── Trang chủ: link xem tất cả ─────────────────────────── */
+.more {
+  margin: 20px 0 0; text-align: right;
+  font-family: var(--sans); font-size: 14px; font-weight: 300; color: var(--muted);
+}
+
+/* ── Trang Ghi chép (lưu trữ) ─────────────────────────────── */
+.archive-page { padding-top: 120px; }
+.archive-head {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between;
+  gap: 8px 16px; margin-bottom: 56px;
+}
+.archive-head h1 {
+  margin: 0; font-weight: 400;
+  font-size: clamp(32px, 4.2vw, 44px); line-height: 1.2; letter-spacing: -.005em;
+}
+.archive-head p {
+  margin: 0; font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.archive-year + .archive-year { margin-top: 56px; }
+.archive-year h2 {
+  margin: 0 0 12px;
+  font-family: var(--sans); font-size: 13px; font-weight: 400; letter-spacing: .04em;
+  color: var(--muted); font-variant-numeric: tabular-nums;
+}
+.pager {
+  margin-top: 48px; display: flex; align-items: center; gap: 16px;
+  font-family: var(--sans); font-size: 14px; font-weight: 300; color: var(--muted);
+}
+.pager > * { flex: 1 1 0; }
+.pager a { padding: 12px 0; }
+.pager > :last-child { text-align: right; }
+.pager-pos { text-align: center; font-variant-numeric: tabular-nums; letter-spacing: .04em; }
+
 /* ── 404 ──────────────────────────────────────────────────── */
 .notfound { padding-top: 160px; color: var(--muted); }
 .notfound .big { font-size: 44px; color: var(--ink); margin: 0 0 16px; }
@@ -290,6 +325,8 @@ figure.sgf { margin: 48px 0; outline-offset: 8px; }
   .move { flex-basis: auto; }
   .post-list time { margin-left: auto; }
   .post-head { padding-top: 72px; padding-bottom: 40px; }
+  .archive-page { padding-top: 72px; }
+  .archive-head { margin-bottom: 40px; }
   .prose { font-size: 18px; line-height: 1.8; }
   .home-photo, .site-footer { padding-top: 80px; }
 }

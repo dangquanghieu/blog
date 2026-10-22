@@ -29,6 +29,13 @@ giscus:
 
 permalink: /:year/:month/:title/
 
+# Trang chủ: số bài mới nhất hiển thị
+home_posts: 7
+
+# Trang Ghi chép (/ghi-chep/): số bài mỗi trang, đường dẫn các trang sau
+paginate: 20
+paginate_path: "/ghi-chep/trang/:num/"
+
 # Bài trong _posts/ tự dùng layout "post" (không cần ghi trong front matter)
 defaults:
   - scope:
@@ -47,6 +54,7 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
+  - jekyll-paginate
 
 exclude:
   - README.md

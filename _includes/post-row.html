@@ -1,0 +1,13 @@
+{%- comment -%}
+  Một dòng trong danh sách bài (trang chủ và trang Ghi chép).
+  Dùng: {% include post-row.html post=post %}
+{%- endcomment -%}
+<li>
+  <a class="row" href="{{ include.post.url | relative_url }}">
+    <span class="stone {% if include.post.stone == 'white' %}white{% else %}black{% endif %}" aria-hidden="true"></span>
+    {%- capture n %}{% include move.html post=include.post %}{% endcapture %}
+    <abbr class="move" title="Nước thứ {{ n | strip }}">手 {{ n | strip }}</abbr>
+    <span class="t">{{ include.post.title | escape }}</span>
+    <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: '%d.%m.%Y' }}</time>
+  </a>
+</li>

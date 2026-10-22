@@ -1,0 +1,40 @@
+---
+layout: default
+title: Ghi chép
+---
+{%- comment -%}
+  Trang lưu trữ, phân trang bằng jekyll-paginate.
+  Trang 1: /ghi-chep/   Trang 2 trở đi: /ghi-chep/trang/2/ …
+  Số bài mỗi trang: `paginate` trong _config.yml.
+{%- endcomment -%}
+{%- assign list = paginator.posts | default: site.posts -%}
+<section class="archive-page wrap">
+  <header class="archive-head">
+    <h1>Ghi chép</h1>
+    <p>{{ site.posts.size }} nước{% if paginator.total_pages > 1 %} · trang {{ paginator.page }} / {{ paginator.total_pages }}{% endif %}</p>
+  </header>
+
+  {%- assign groups = list | group_by_exp: "p", "p.date | date: '%Y'" %}
+  {%- for g in groups %}
+  <section class="archive-year" aria-labelledby="nam-{{ g.name }}">
+    <h2 id="nam-{{ g.name }}">{{ g.name }}</h2>
+    <ol class="post-list">
+      {%- for post in g.items %}
+      {% include post-row.html post=post %}
+      {%- endfor %}
+    </ol>
+  </section>
+  {%- endfor %}
+
+  {%- if paginator.total_pages > 1 %}
+  <nav class="pager" aria-label="Phân trang">
+    {%- if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}" rel="prev">← Mới hơn</a>
+    {%- else %}<span></span>{% endif %}
+    <span class="pager-pos">{{ paginator.page }} / {{ paginator.total_pages }}</span>
+    {%- if paginator.next_page %}
+    <a href="{{ paginator.next_page_path | relative_url }}" rel="next">Cũ hơn →</a>
+    {%- else %}<span></span>{% endif %}
+  </nav>
+  {%- endif %}
+</section>
