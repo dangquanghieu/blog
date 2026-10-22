@@ -4,7 +4,7 @@ title: Giới thiệu
 permalink: /gioi-thieu/
 ---
 
-Tên tôi thì bạn đã rõ rồi, đang làm gì chắc bạn cũng biết. Vậy nên thay vì đọc những dòng mà tôi miễn cưỡng giới thiệu bản thân thì bạn hãy tự khám phá quanh đây đi. Nhé!
+Tên tôi thì bạn đã rõ rồi, đang làm gì chắc bạn cũng biết. Ngoài ra tôi không biết nên viết thêm gì nữa. Vậy xin mời bạn tiếp tục khám phá quanh đây.
 
 ## Về những con số
 
