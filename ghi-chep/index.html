@@ -1,6 +1,12 @@
 ---
 layout: default
 title: Ghi chép
+# Đoạn giới thiệu ở đầu trang: Markdown, chỉ hiện ở trang 1, để "" thì không hiện.
+# Viết nhiều dòng thì dùng dấu | và thụt lề 2 dấu cách, ví dụ:
+#   intro: |
+#     Mỗi bài ở đây là một nước cờ trong một ván chưa biết bao giờ kết thúc.
+#     Xem thêm [Giới thiệu](/gioi-thieu/).
+intro: "Mỗi bài ở đây là một nước cờ trong một ván chưa biết bao giờ kết thúc."
 ---
 {%- comment -%}
   Trang lưu trữ, phân trang bằng jekyll-paginate.
@@ -13,6 +19,9 @@ title: Ghi chép
     <h1>Ghi chép</h1>
     <p>{{ site.posts.size }} nước{% if paginator.total_pages > 1 %} · trang {{ paginator.page }} / {{ paginator.total_pages }}{% endif %}</p>
   </header>
+  {%- if page.intro and page.intro != "" and paginator.page <= 1 %}
+  <div class="archive-intro prose">{{ page.intro | markdownify }}</div>
+  {%- endif %}
 
   {%- assign groups = list | group_by_exp: "p", "p.date | date: '%Y'" %}
   {%- for g in groups %}

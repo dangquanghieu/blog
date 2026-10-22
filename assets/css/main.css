@@ -286,6 +286,8 @@ figure.sgf { margin: 48px 0; outline-offset: 8px; }
   margin: 0; font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--muted);
   font-variant-numeric: tabular-nums;
 }
+.archive-intro { margin: -24px 0 56px; color: var(--muted); }
+.archive-intro > :last-child { margin-bottom: 0; }
 .archive-year + .archive-year { margin-top: 56px; }
 .archive-year h2 {
   margin: 0 0 12px;
