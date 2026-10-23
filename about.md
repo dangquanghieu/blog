@@ -4,9 +4,7 @@ title: Giới thiệu
 permalink: /gioi-thieu/
 ---
 
-Nơi đây tôi viết về mọi thứ, trừ công việc ;)
-
-## Về những con số
+Nơi đây tôi viết về mọi thứ, trừ công việc.
 
 Mỗi bài viết được đánh số như một nước cờ: **手** (*thủ* — "tay", cũng là chữ dùng để đếm nước đi trong kỳ phổ). Bài 24 là nước thứ 24 của một ván cờ chưa biết bao giờ kết thúc.
 
