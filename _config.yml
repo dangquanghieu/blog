@@ -18,7 +18,7 @@ baseurl: ""
 
 # Liên kết ở footer (để trống thì không hiện)
 main_site: https://dangquanghieu.com
-flickr: ""                       # ví dụ https://www.flickr.com/photos/<username>/
+flickr: "https://flickr.com/photos/fridaycafe/"                       # ví dụ https://www.flickr.com/photos/<username>/
 
 # Bình luận bằng giscus (https://giscus.app). Điền đủ 4 giá trị để bật.
 giscus:
