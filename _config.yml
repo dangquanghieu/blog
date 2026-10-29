@@ -35,6 +35,10 @@ giscus:
 
 permalink: /:year/:month/:title/
 
+# Xác suất (0–1) một lượt ghé thăm mở ở giao diện ngược với hệ điều hành
+# (0 = luôn theo hệ điều hành). Người đọc bấm nút sáng/tối thì lựa chọn đó được ưu tiên.
+theme_flip: 0.2
+
 # Trang chủ: số bài mới nhất hiển thị
 home_posts: 7
 

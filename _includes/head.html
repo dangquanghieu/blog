@@ -2,8 +2,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light dark">
 <script>
-  /* Áp giao diện sáng/tối đã lưu trước khi vẽ trang, tránh nháy màu */
-  try { var t = localStorage.getItem('dvt-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+  /* Giao diện sáng/tối, chạy trước khi vẽ trang để không nháy màu:
+     1. Người đọc đã bấm nút sáng/tối → dùng lựa chọn đã lưu (localStorage).
+     2. Chưa bấm → mỗi lượt ghé thăm (phiên trình duyệt) bốc thăm một lần:
+        {{ site.theme_flip | default: 0.2 | times: 100 }}% ngược với hệ điều hành, còn lại theo hệ điều hành.
+        Kết quả giữ nguyên trong cả phiên (sessionStorage) để không đổi màu khi chuyển trang. */
+  (function () {
+    var t = null;
+    try { t = localStorage.getItem('dvt-theme'); } catch (e) {}
+    if (t !== 'light' && t !== 'dark') {
+      try { t = sessionStorage.getItem('dvt-theme-session'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        var sys = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        var flip = Math.random() < {{ site.theme_flip | default: 0.2 }};
+        t = flip ? (sys === 'dark' ? 'light' : 'dark') : sys;
+        try { sessionStorage.setItem('dvt-theme-session', t); } catch (e) {}
+      }
+    }
+    document.documentElement.setAttribute('data-theme', t);
+  })();
 </script>
 {% seo %}
 <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml">
