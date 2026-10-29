@@ -23,7 +23,7 @@ BLOCKLIST = ""
 [[d1_databases]]
 binding = "DB"
 database_name = "den-va-trang-comments"
-database_id = "DIEN_DATABASE_ID_VAO_DAY"
+database_id = "d2d50473-aff0-45b5-b5a2-a82a395f606c"
 
 # Secrets (đặt bằng `npx wrangler secret put <TÊN>`, không ghi vào file này):
 #   ADMIN_TOKEN         bắt buộc — mật khẩu trang quản trị
