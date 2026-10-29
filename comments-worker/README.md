@@ -94,7 +94,7 @@ npx wrangler d1 export den-va-trang-comments --remote --output=backup.sql   # sa
 ## Chạy thử trên máy
 
 ```bash
-printf 'ADMIN_TOKEN="test"\nIP_SALT="test"\n' > .dev.vars    # không có TURNSTILE_SECRET → bỏ qua Turnstile
+printf 'ADMIN_TOKEN="test"\nIP_SALT="test"\nDEV_SKIP_TURNSTILE="1"\n' > .dev.vars    # bỏ qua Turnstile khi thử cục bộ
 npx wrangler d1 execute den-va-trang-comments --local --file=schema.sql
 npx wrangler dev                                      # API ở http://127.0.0.1:8787
 ```

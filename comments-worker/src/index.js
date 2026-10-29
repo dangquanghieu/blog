@@ -87,11 +87,15 @@ async function createComment(request, env, ctx, cors) {
 
   // 4. Turnstile
   const ip = request.headers.get('CF-Connecting-IP') || '';
+  // Không có TURNSTILE_SECRET thì từ chối (an toàn mặc định); chỉ bỏ qua khi thử cục bộ với DEV_SKIP_TURNSTILE=1.
   if (env.TURNSTILE_SECRET) {
     const ok = await verifyTurnstile(env.TURNSTILE_SECRET, data.token, ip);
     if (!ok) return reject('Không xác minh được bạn không phải bot. Bạn tải lại trang rồi thử lại nhé.', 403);
+  } else if (env.DEV_SKIP_TURNSTILE === '1') {
+    console.warn('DEV_SKIP_TURNSTILE=1 — bỏ qua Turnstile (chỉ dùng khi thử cục bộ).');
   } else {
-    console.warn('TURNSTILE_SECRET chưa được đặt — bỏ qua bước xác minh (chỉ nên dùng khi thử cục bộ).');
+    console.error('TURNSTILE_SECRET chưa được đặt — từ chối mọi bình luận.');
+    return reject('Hệ thống bình luận đang được cấu hình, bạn quay lại sau nhé.', 503);
   }
 
   // 5. Tần suất theo IP và chặn trùng lặp
