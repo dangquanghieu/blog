@@ -102,6 +102,64 @@ npx wrangler dev                                      # API ở http://127.0.0.1
 Khi đó đặt tạm `comments.api: "http://127.0.0.1:8787"` và `turnstile_sitekey: ""`
 trong `_config.yml` của blog, chạy `bundle exec jekyll serve`. Nhớ trả lại trước khi push.
 
+## Vận hành
+
+Địa chỉ hiện tại:
+- API: `https://den-va-trang-comments.dangquanghieu.workers.dev`
+- Quản trị: `https://den-va-trang-comments.dangquanghieu.workers.dev/admin` (mật khẩu `ADMIN_TOKEN`, lưu trong Apple Passwords)
+- Turnstile site key: trong `_config.yml` của blog (`comments.turnstile_sitekey`)
+
+Mọi lệnh `npx wrangler …` chạy trong thư mục `comments-worker/`.
+
+### Thường ngày
+- Bình luận hiện ngay. Thỉnh thoảng mở trang `/admin` để xem; **Ẩn** (giữ lại, có thể hiện lại)
+  hoặc **Xoá hẳn** bình luận không phù hợp; **Trả lời** để đăng với tên tác giả.
+- Muốn được báo khi có bình luận mới: bật Telegram (mục trên).
+
+### Khi spam tăng
+1. Thêm từ khoá vào `BLOCKLIST` trong `wrangler.toml` (cách nhau dấu phẩy), rồi `npx wrangler deploy`.
+2. Siết `MAX_LINKS` (ví dụ `"0"` hoặc `"1"`) hoặc `RATE_LIMIT` (ví dụ `"1"`), rồi deploy.
+3. Xoá hàng loạt spam theo từ khoá:
+   ```bash
+   npx wrangler d1 execute den-va-trang-comments --remote \
+     --command "DELETE FROM comments WHERE is_owner = 0 AND body LIKE '%tu-khoa%'"
+   ```
+4. Tạm khoá bình luận toàn blog: đặt `comments.api: ""` trong `_config.yml` của blog rồi push
+   (dữ liệu cũ vẫn còn trong D1, bật lại là hiện như cũ). Tắt cho một bài: `comments: false`.
+
+### Sao lưu (vài tháng một lần)
+```bash
+npx wrangler d1 export den-va-trang-comments --remote --output=backup-$(date +%Y%m%d).sql
+```
+File sao lưu chứa nội dung bình luận: **không commit vào repo public**, cất ở nơi riêng.
+
+### Đổi mật khẩu quản trị
+```bash
+openssl rand -hex 24
+npx wrangler secret put ADMIN_TOKEN       # cập nhật luôn trong Apple Passwords
+```
+
+### Sửa code Worker
+Sửa `src/index.js` hoặc `wrangler.toml` → `npx wrangler deploy` → commit + push repo.
+Code trong repo chỉ là bản lưu; Cloudflare chỉ chạy bản đã `deploy`.
+
+### Sự cố đã gặp và cách xử lý
+- **Đăng ký subdomain workers.dev báo "invalid" mọi tên:** đăng ký/đổi trên dashboard
+  (Workers & Pages → Subdomain) thay vì trong lệnh `wrangler deploy`.
+  Đổi subdomain làm đổi địa chỉ mọi Worker → phải sửa `comments.api` trong `_config.yml`.
+- **`d1 create` xong nhưng `database_id` vẫn là chuỗi giữ chỗ:** lấy uuid bằng
+  `npx wrangler d1 list` rồi điền vào `wrangler.toml`.
+- **Dashboard Turnstile cảnh báo "Siteverify isn't being called":** kiểm tra
+  `npx wrangler secret list` có `TURNSTILE_SECRET`; nếu có thì gửi thử một bình luận trong lúc
+  chạy `npx wrangler tail`. Bình luận đăng được = siteverify thành công (Worker từ chối mọi bình luận
+  khi thiếu secret hoặc khi xác minh thất bại). Cảnh báo trên dashboard cập nhật chậm.
+  Không cần dùng "Fix it with Spin".
+- **Bình luận báo "Không xác minh được bạn không phải bot":** Secret key không khớp Site key, hoặc
+  hostname của widget Turnstile không có `blog.dangquanghieu.com`.
+- **Bình luận báo "Hệ thống bình luận đang được cấu hình":** Worker thiếu `TURNSTILE_SECRET`.
+- **Khung bình luận không hiện trên blog:** `comments.api` trong `_config.yml` trống hoặc chưa
+  được commit/push; kiểm tra `git status`.
+
 ## Quyền riêng tư
 
 Chỉ lưu tên, nội dung, thời gian, user-agent và **giá trị băm** của IP (SHA-256 kèm muối)
