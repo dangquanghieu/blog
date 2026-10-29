@@ -49,11 +49,12 @@
     });
     return wrap;
   }
-  function renderItem(c, fresh) {
+  // idx: thứ tự bình luận trong bài (0, 1, 2…) — đen, trắng xen kẽ như các nước cờ
+  function renderItem(c, fresh, idx) {
     var li = el('li', 'cm-item' + (c.is_owner ? ' owner' : '') + (fresh ? ' fresh' : ''));
     li.id = 'bl-' + c.id;
     var head = el('div', 'cm-head');
-    var dot = el('span', 'stone ' + (c.is_owner ? 'black' : 'white'));
+    var dot = el('span', 'stone ' + (idx % 2 === 0 ? 'black' : 'white'));
     dot.setAttribute('aria-hidden', 'true');
     head.appendChild(dot);
     head.appendChild(el('strong', 'cm-name', c.name));
@@ -99,7 +100,7 @@
     fetch(api + '/api/comments?page=' + encodeURIComponent(page))
       .then(function (r) { return r.json(); })
       .then(function (d) {
-        (d.comments || []).forEach(function (c) { list.appendChild(renderItem(c)); });
+        (d.comments || []).forEach(function (c, i) { list.appendChild(renderItem(c, false, i)); });
         n = (d.comments || []).length;
         setCount();
         if (location.hash.indexOf('#bl-') === 0) {
@@ -184,7 +185,7 @@
           return d;
         });
       }).then(function (d) {
-        var li = renderItem(d.comment, true);
+        var li = renderItem(d.comment, true, n);
         list.appendChild(li);
         n++; setCount();
         bodyInput.value = '';
