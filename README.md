@@ -171,7 +171,15 @@ Workflow tự đặt `baseurl: /blog`. Chỉ cần chắc site chính không có
 Đổi giữa A và B không cần sửa code: workflow lấy `url`/`baseurl` từ cấu hình Pages.
 Sau khi đổi, chạy lại workflow: `gh workflow run Deploy`.
 
-## Bình luận (tuỳ chọn)
+## Bình luận (Cloudflare)
+
+Bình luận tự dựng, không cần đăng nhập, hiện ngay sau khi gửi: API trong thư mục
+`comments-worker/` chạy trên Cloudflare Workers + D1, blog vẫn ở GitHub Pages.
+Cài đặt, quản trị, Telegram: xem `comments-worker/README.md`.
+Bật bằng `comments.api` + `comments.turnstile_sitekey` trong `_config.yml`;
+tắt cho một bài bằng `comments: false` trong front matter.
+
+## Bình luận bằng giscus (phương án cũ, tuỳ chọn)
 
 Bật Discussions cho repo, cài app giscus, lấy 4 giá trị ở https://giscus.app rồi điền vào
 mục `giscus:` trong `_config.yml`.

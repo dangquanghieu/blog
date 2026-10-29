@@ -1,0 +1,34 @@
+{%- comment -%}
+  Khung bình luận (API: comments-worker/ trên Cloudflare).
+  Bật bằng `comments.api` trong _config.yml; tắt cho một bài bằng `comments: false` trong front matter.
+{%- endcomment -%}
+<section class="cm" id="binh-luan" aria-labelledby="cm-title"
+  data-api="{{ site.comments.api }}"
+  data-page="{{ page.url }}"
+  data-sitekey="{{ site.comments.turnstile_sitekey }}">
+  <h2 id="cm-title" class="cm-title">Bình luận<span class="cm-count"></span></h2>
+  <ol class="cm-list"></ol>
+  <p class="cm-empty" hidden>Chưa có bình luận nào.</p>
+
+  <form class="cm-form" novalidate>
+    <div class="cm-field">
+      <label for="cm-name">Tên</label>
+      <input id="cm-name" name="name" maxlength="50" autocomplete="name" required>
+    </div>
+    <div class="cm-hp" aria-hidden="true">
+      <label for="cm-website">Website</label>
+      <input id="cm-website" name="website" tabindex="-1" autocomplete="off">
+    </div>
+    <div class="cm-field">
+      <label for="cm-body">Bình luận</label>
+      <textarea id="cm-body" name="body" rows="4" maxlength="3000" required></textarea>
+    </div>
+    <div class="cm-turnstile"></div>
+    <div class="cm-actions">
+      <p class="cm-status" role="status" aria-live="polite"></p>
+      <button type="submit">Gửi</button>
+    </div>
+  </form>
+  <noscript><p class="cm-empty">Cần bật JavaScript để xem và gửi bình luận.</p></noscript>
+</section>
+<script defer src="{{ '/assets/js/comments.js' | relative_url }}"></script>

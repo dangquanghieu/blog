@@ -337,3 +337,51 @@ figure.sgf { margin: 48px 0; outline-offset: 8px; }
   .site-header, .site-footer, .post-nav, .comments { display: none; }
   body { background: #fff; color: #000; }
 }
+
+/* ── Bình luận (_includes/comments.html, assets/js/comments.js) ── */
+.cm { margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--rule); }
+.cm-title {
+  margin: 0 0 24px; font-family: var(--sans); font-size: 13px; font-weight: 400;
+  letter-spacing: .04em; color: var(--muted);
+}
+.cm-list { list-style: none; margin: 0; padding: 0; }
+.cm-item { padding: 20px 0; border-bottom: 1px solid var(--rule); }
+.cm-item:first-child { padding-top: 0; }
+.cm-item.fresh { animation: cm-in .6s ease-out; }
+@keyframes cm-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .cm-item.fresh { animation: none; } }
+.cm-head {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-bottom: 6px;
+  font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--muted);
+}
+.cm-head .stone { flex: none; width: 8px; height: 8px; align-self: center; }
+.cm-name { font-weight: 500; color: var(--ink); }
+.cm-badge { font-size: 12px; letter-spacing: .04em; }
+.cm-time { margin-left: auto; font-variant-numeric: tabular-nums; }
+.cm-body { font-size: 17px; line-height: 1.75; overflow-wrap: anywhere; }
+.cm-body p { margin: 0 0 10px; }
+.cm-body p:last-child { margin-bottom: 0; }
+.cm-body a { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.cm-empty { margin: 0 0 8px; font-family: var(--sans); font-size: 14px; font-weight: 300; color: var(--muted); }
+
+.cm-form { margin-top: 32px; display: flex; flex-direction: column; gap: 18px; }
+.cm-field { display: flex; flex-direction: column; gap: 6px; }
+.cm-field label { font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--muted); }
+.cm-field input, .cm-field textarea {
+  font: inherit; font-size: 17px; color: var(--ink); background: transparent;
+  border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; padding: 8px 0;
+}
+.cm-field textarea { resize: vertical; min-height: 6.5em; line-height: 1.7; }
+.cm-field input:focus, .cm-field textarea:focus { outline: none; border-bottom-color: var(--ink); }
+.cm-hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.cm-turnstile:empty { display: none; }
+.cm-actions { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.cm-status { margin: 0; font-family: var(--sans); font-size: 13px; font-weight: 300; color: var(--muted); }
+.cm-status.error { color: var(--ink); }
+.cm-actions button {
+  min-width: 88px; min-height: 44px; padding: 0 20px;
+  font-family: var(--sans); font-size: 14px; font-weight: 400; letter-spacing: .04em;
+  color: var(--paper); background: var(--ink); border: 0; border-radius: 2px; cursor: pointer;
+}
+.cm-actions button:hover { background: var(--accent); }
+.cm-actions button:disabled { opacity: .5; cursor: default; background: var(--ink); }

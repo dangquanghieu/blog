@@ -1,0 +1,33 @@
+# Cloudflare Worker: API bình luận cho blog "Đen và Trắng"
+# Hướng dẫn deploy: xem README.md trong thư mục này.
+
+name = "den-va-trang-comments"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+workers_dev = true
+
+[vars]
+# Các trang được phép gửi/đọc bình luận (CORS). Cách nhau bằng dấu phẩy.
+ALLOWED_ORIGINS = "https://blog.dangquanghieu.com,http://127.0.0.1:4000,http://localhost:4000"
+# Dùng để tạo link trong thông báo Telegram và trang quản trị
+SITE_URL = "https://blog.dangquanghieu.com"
+# Tên hiện khi bạn trả lời từ trang quản trị
+OWNER_NAME = "Đặng Quang Hiếu"
+# Số link tối đa trong một bình luận
+MAX_LINKS = "2"
+# Số bình luận tối đa từ cùng một IP trong 10 phút
+RATE_LIMIT = "3"
+# Từ khoá cấm (không phân biệt hoa thường), cách nhau bằng dấu phẩy. Ví dụ: "casino,viagra"
+BLOCKLIST = ""
+
+[[d1_databases]]
+binding = "DB"
+database_name = "den-va-trang-comments"
+database_id = "DIEN_DATABASE_ID_VAO_DAY"
+
+# Secrets (đặt bằng `npx wrangler secret put <TÊN>`, không ghi vào file này):
+#   ADMIN_TOKEN         bắt buộc — mật khẩu trang quản trị
+#   IP_SALT             bắt buộc — chuỗi ngẫu nhiên để băm IP
+#   TURNSTILE_SECRET    bắt buộc khi chạy thật — secret key của widget Turnstile
+#   TELEGRAM_BOT_TOKEN  tuỳ chọn — báo bình luận mới qua Telegram
+#   TELEGRAM_CHAT_ID    tuỳ chọn

@@ -20,6 +20,12 @@ baseurl: ""
 main_site: https://dangquanghieu.com
 flickr: "https://flickr.com/photos/fridaycafe/"                       # ví dụ https://www.flickr.com/photos/<username>/
 
+# Bình luận tự dựng trên Cloudflare (xem comments-worker/README.md).
+# Điền `api` để bật; khi có `api`, giscus bên dưới bị bỏ qua.
+comments:
+  api: ""                  # https://den-va-trang-comments.<tài-khoản>.workers.dev
+  turnstile_sitekey: ""    # Site key của widget Turnstile (công khai)
+
 # Bình luận bằng giscus (https://giscus.app). Điền đủ 4 giá trị để bật.
 giscus:
   repo: ""                       # ví dụ dangquanghieu/blog
@@ -63,3 +69,5 @@ exclude:
   - vendor
   - .github
   - _config_ci.yml
+  - comments-worker
+  - node_modules

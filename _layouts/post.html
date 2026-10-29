@@ -34,6 +34,10 @@ layout: default
   </nav>
 </div>
 
-{%- if site.giscus.repo != "" and site.giscus.repo_id != "" and page.comments != false %}
+{%- if page.comments != false %}
+  {%- if site.comments.api and site.comments.api != "" %}
+<div class="wrap-text">{% include comments.html %}</div>
+  {%- elsif site.giscus.repo != "" and site.giscus.repo_id != "" %}
 <div class="wrap-text">{% include giscus.html %}</div>
+  {%- endif %}
 {%- endif %}
