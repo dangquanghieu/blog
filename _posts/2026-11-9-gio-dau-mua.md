@@ -1,7 +1,7 @@
 ---
 title: Gió đầu mùa
 stone: white            # black: suy ngẫm, cờ · white: ảnh, du hành
-tags: [nhảm]
+tags: [nhảm, mùa thu, lập đông, trăng]
 move: 911               # bỏ dấu # nếu muốn tự đặt số 手 thay vì đếm tự động
 # math: true            # bật MathJax nếu bài có công thức
 ---
@@ -10,7 +10,7 @@ Tôi lười biếng. Tôi có thể nằm ườn cả ngày, có thể không l
 
 Nói chung là ngập mặt, lại còn không thấy chán. Tôi chán ghét bản thân vì điều đó.
 
-Chỉ có thể đổ tại thời tiết. Năm nay không có mùa thu. Mấy ngày trước còn nóng chảy mỡ, bụp phát hôm nay ra đường đã co ro cúm rúm, mùa đông rồi. Thật là bất công! Tôi nhớ cái tiết trời vừa nắng vừa mát lạnh. Nhớ cái không khí bàng bạc trên những đỉnh núi, trên những ngọn đồi xa. Nhớ gợn nước cùng mặt trời đỏ chập chờn chìm xuống lúc hoàng hôn. Nhớ cảm giác lãng đãng mà chẳng rõ mình đang nghĩ gì, đang làm gì, đang gặp ai hay đang nhớ ai nữa. Tất cả những thứ đó là của mùa thu bao năm trước mà năm nay chưa thèm đến. 
+Chỉ có thể đổ tại thời tiết. Năm nay không có mùa thu. Mấy ngày trước còn nóng chảy mỡ, bụp phát hôm nay ra đường đã co ro cúm rúm, mùa đông rồi. Thật là bất công! Tôi nhớ cái tiết trời vừa nắng vàng vừa mát lạnh. Nhớ cái không khí bàng bạc trên những đỉnh núi, trên những ngọn đồi xa. Nhớ gợn nước cùng mặt trời đỏ chập chờn chìm xuống lúc hoàng hôn. Nhớ cảm giác lãng đãng mà chẳng rõ mình đang nghĩ gì, đang làm gì, đang gặp ai hay đang nhớ ai nữa. Tất cả những thứ đó là của mùa thu bao năm trước mà năm nay chưa thèm đến. 
 
 Hôm qua xem một phim điện ảnh HQ. Hai nhà kia ở hai thế giới rất khác nhau, chạm vào nhau, lướt qua tim nhau. Rổi lại tách ra, trở về với thế giới của riêng họ. Chỉ ánh trăng kia, bầu trời kia, còn lại ở đó. Có khi nào, cùng nhìn lên, họ cùng nhớ về nhau?
 
