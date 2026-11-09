@@ -92,13 +92,17 @@
     var y0 = -size, y1 = H * rand(0.86, 0.98);
     var dir = ltr ? 1 : -1;
 
-    var N = 96, frames = [];
-    // Zích zắc lúc đầu: sóng tam giác (bo góc nhẹ) theo quãng đường đã bay, biên độ lớn rồi tắt dần.
-    var zigA = isSnow ? Math.min(W * 0.035, 26) : Math.min(W * 0.09, 85);
-    var zigF = isSnow ? 4 : rand(5, 6.5);                   // số nhịp zích zắc trên cả quãng đường
-    var zigP = Math.random();
-    function tri(u) { var f = u - Math.floor(u); return f < 0.5 ? 4 * f - 1 : 3 - 4 * f; }   // −1…1
-    function zig(t) { var v = tri(zigF * t + zigP); return v * (1 - 0.18 * v * v) / 0.82; }
+    var N = 72, frames = [];
+    // Một nhịp lượn dài lúc đầu: dạt sang một bên rồi vòng sang bên kia một lần, trơn (không gấp khúc),
+    // trên ~55% quãng đường đầu; sau đó chỉ còn chao nhẹ.
+    var zigA = isSnow ? Math.min(W * 0.03, 22) : Math.min(W * 0.07, 70);
+    var zigEnd = 0.55;
+    var zigDir = Math.random() < 0.5 ? 1 : -1;
+    function zig(q) {
+      if (q <= 0 || q >= zigEnd) return 0;
+      var u = q / zigEnd;
+      return zigDir * Math.sin(2 * Math.PI * u) * Math.sin(Math.PI * u);   // một lần sang trái-phải, mềm ở hai đầu
+    }
     var spin = (isSnow ? rand(90, 160) : rand(200, 330)) * dir;
     var r0 = rand(-40, 40);
     var swayA = isSnow ? Math.min(W * 0.03, 24) : Math.min(W * 0.05, 46);
@@ -110,12 +114,11 @@
       var t = i / (N - 1);
       var p = 1 - Math.pow(1 - t, 2.6);                    // nhanh → chậm
       var amp = swayA * (0.25 + 0.75 * t);                 // càng chậm càng chao
-      var zAmp = zigA * Math.pow(1 - p, 1.3);               // mạnh lúc đầu, tắt dần
-      var z = zAmp * zig(p);
-      var dz = zAmp * (zig(p + 0.004) - zig(p - 0.004));    // hướng đang lượn → độ nghiêng
+      var z = zigA * zig(p);
+      var dz = zigA * (zig(p + 0.004) - zig(p - 0.004));    // hướng đang lượn → độ nghiêng
       var x = x0 + (x1 - x0) * p + z + amp * Math.sin(2 * Math.PI * swayF * t + phase);
       var y = y0 + (y1 - y0) * p;
-      var tilt = Math.max(-35, Math.min(35, dz * 4));
+      var tilt = Math.max(-25, Math.min(25, dz * 3));
       var rot = r0 + spin * p + tilt + (isSnow ? 0 : 18 * Math.sin(2 * Math.PI * swayF * t + phase + 1));
       var flip = isSnow ? 1 : 0.35 + 0.65 * Math.abs(Math.cos(Math.PI * flipF * t + phase));
       var op = t < 0.03 ? t / 0.03 : (t > 0.82 ? Math.max(0, (1 - t) / 0.18) : 1);
