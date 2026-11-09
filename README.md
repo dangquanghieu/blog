@@ -72,6 +72,16 @@ Nếu build lỗi: `gh run view --log-failed`.
 - Hai con số này chỉnh trong `_config.yml`. Phân trang dùng plugin `jekyll-paginate`
   (sau khi thêm vào Gemfile phải chạy `bundle install` một lần và commit `Gemfile.lock`).
 
+## Lá theo mùa
+
+Mỗi lượt ghé thăm, một chiếc lá bay chéo từ trên xuống qua trang, lúc đầu nhanh rồi chậm dần
+(`assets/js/season-leaf.js`). Mùa tính theo tháng (giờ Việt Nam):
+Thu 9–11 lá phong hoặc lá bạch quả · Đông 12–2 bông tuyết · Xuân 3–5 hoa đào · Hạ 6–8 lá sen.
+
+- Bật/tắt, tần suất: `season_leaf` trong `_config.yml` (`once` | `always` | `off`).
+- Xem thử một mùa: thêm `?leaf=spring` (hoặc `summer`, `autumn`, `winter`, `maple`, `ginkgo`) vào URL.
+- Không chạy khi người đọc bật "Giảm chuyển động" (Reduce motion) trong hệ điều hành.
+
 ## Viết bài
 
 ```yaml

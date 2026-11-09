@@ -39,6 +39,10 @@ permalink: /:year/:month/:title/
 # (0 = luôn theo hệ điều hành). Người đọc bấm nút sáng/tối thì lựa chọn đó được ưu tiên.
 theme_flip: 0.2
 
+# Một chiếc lá theo mùa bay chéo qua trang (assets/js/season-leaf.js):
+#   once = một lần mỗi lượt ghé thăm · always = mỗi lần tải trang · off = tắt
+season_leaf: once
+
 # Trang chủ: số bài mới nhất hiển thị
 home_posts: 7
 

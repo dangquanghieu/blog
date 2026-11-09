@@ -9,5 +9,8 @@
 {{ content }}
 </main>
 {% include footer.html %}
+{%- if site.season_leaf and site.season_leaf != "off" %}
+<script defer src="{{ '/assets/js/season-leaf.js' | relative_url }}" data-mode="{{ site.season_leaf }}"></script>
+{%- endif %}
 </body>
 </html>
