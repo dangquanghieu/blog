@@ -14,4 +14,4 @@ Chỉ có thể đổ tại thời tiết. Năm nay không có mùa thu. Mấy n
 
 Hôm qua xem một phim điện ảnh HQ. Hai nhà kia ở hai thế giới rất khác nhau, chạm vào nhau, lướt qua tim nhau. Rổi lại tách ra, trở về với thế giới của riêng họ. Chỉ ánh trăng kia, bầu trời kia, còn lại ở đó. Có khi nào, cùng nhìn lên, họ cùng nhớ về nhau?
 
-Theo lịch thì hôm qua lập đông. Đêm qua gió về, sáng nay mưa xuống. Nhưng lá momiji và ginkgo vẫn đang rực rỡ. Đêm nay trăng mùng 1, liệu có là trăng đẹp nhất?
+Theo lịch thì hôm qua lập đông. Đêm qua gió về, sáng nay mưa xuống. Nhưng lá momiji và ginkgo ở đâu đó vẫn đang rực rỡ. Đêm nay trăng mùng 1, liệu có là trăng đẹp nhất?
